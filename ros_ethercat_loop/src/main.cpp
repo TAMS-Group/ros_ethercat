@@ -272,8 +272,8 @@ void *controlLoop(void *)  // NOLINT(readability/casting)
 {
   double last_published, last_loop_start;
   int policy;
-  tinyxml2::XMLElement *root;
-  tinyxml2::XMLElement *root_element;
+  TiXmlElement *root;
+  TiXmlElement *root_element;
 
   ros::NodeHandle node(name);
 
@@ -300,7 +300,7 @@ void *controlLoop(void *)  // NOLINT(readability/casting)
     rtpublisher = new RealtimePublisher<std_msgs::Float64>(node, "realtime", 2);
 
   // Load robot description
-  tinyxml2::XMLDocument xml;
+  TiXmlDocument xml;
   struct stat st;
 
   if (ros::param::get(g_options.rosparam_, g_robot_desc))

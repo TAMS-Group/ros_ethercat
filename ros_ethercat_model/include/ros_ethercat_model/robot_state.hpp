@@ -70,7 +70,7 @@ using std::string;
 class RobotState : public hardware_interface::HardwareInterface
 {
 public:
-  explicit RobotState(tinyxml2::XMLElement *root = NULL, vector<string> joint_filter = vector<string>())
+  explicit RobotState(TiXmlElement *root = NULL, vector<string> joint_filter = vector<string>())
     : joint_filter_(joint_filter), transmission_loader_("ros_ethercat_model", "ros_ethercat_model::Transmission")
   {
     if (root)
@@ -83,7 +83,7 @@ public:
     return &actuator_states_[name];
   }
 
-  void initXml(tinyxml2::XMLElement *root)
+  void initXml(TiXmlElement *root)
   {
     try
     {
@@ -107,7 +107,7 @@ public:
         }
       }
 
-      for (tinyxml2::XMLElement *xit = root->FirstChildElement("transmission");
+      for (TiXmlElement *xit = root->FirstChildElement("transmission");
            xit;
            xit = xit->NextSiblingElement("transmission"))
       {

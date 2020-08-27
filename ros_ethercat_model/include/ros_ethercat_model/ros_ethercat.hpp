@@ -102,7 +102,7 @@ public:
   {
   }
 
-  RosEthercat(ros::NodeHandle &nh, const string &eth, bool allow, tinyxml2::XMLElement* config) :
+  RosEthercat(ros::NodeHandle &nh, const string &eth, bool allow, TiXmlElement* config) :
     compatibility_mode_(true),
     collect_diagnostics_running_(false),
     run_diagnostics_(false)
@@ -184,9 +184,9 @@ public:
   virtual bool init(ros::NodeHandle& root_nh, ros::NodeHandle &robot_hw_nh)
   {
     // Load robot description
-    tinyxml2::XMLDocument xml;
-    tinyxml2::XMLElement *root;
-    tinyxml2::XMLElement *root_element;
+    TiXmlDocument xml;
+    TiXmlElement *root;
+    TiXmlElement *root_element;
 
     std::string robot_description;
     std::string robot_description_param;
